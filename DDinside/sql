@@ -1,0 +1,60 @@
+create table memberlist1(
+	num number(5) primary key,
+	id varchar2(20) not null,
+	pass varchar2(20) not null,
+	name varchar2(20) not null,
+	email varchar2(30) not null,
+	joindate date default sysdate
+);
+
+create table adminlist1(
+	num number(5) primary key,
+	id varchar2(20) not null,
+	pass varchar2(20) not null,
+	name varchar2(20) not null,
+	email varchar2(30) 
+);
+
+insert into memberlist1 (num, id, pass, name, email) values (memberlist1_seq.nextval, 'tttt','tttt','ケーキ','admin@dd.com');
+select * from DDINSIDE;
+delete from DDINSIDE where num = 49;
+
+create table ddinside(
+	board_id varchar(30) not null,
+	num number(5) primary key,
+	pass varchar2(30),
+	userid varchar2(30) not null,
+	name varchar2(30) not null,
+	title varchar2(50) not null,
+	content varchar2(1000) not null,
+	item varchar2(100),
+	readcount number(5) default 0,
+	commentcount number(5),
+	up number(5) default 0,
+	down number(5) default 0,
+	aho number(5) default 0,
+	report number(5) default 0,
+	writedate date default sysdate
+);
+create sequence ddinside_seq start with 1 increment by 1;
+
+create table ddinside_comment(
+	board_id varchar(30) not null,
+	num number(5) primary key,
+	board_name varchar(30) not null,
+	board_num number(5) not null,
+	writer_id varchar2(30),
+	writer_name varchar2(30) not null,
+	content varchar2(1000),
+	writedate date default sysdate
+	);
+	
+create sequence ddinside_comment_seq start with 1 increment by 1;
+
+select rownum as row_num, num from freeboard1;
+
+
+select * from (select rownum as row_num, FREEBOARD1.* from freeboard1) where row_num <=10;
+select * from(select * from(select rownum as row_num, freeboard1.* from freeboard1) where row_num <= 11) * where row_num <= 20;
+	
+	

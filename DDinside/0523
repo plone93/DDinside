@@ -1,0 +1,44 @@
+select * from FREEBOARD1, PETBOARD1 where freeboard1.up >= and petboard1.up >= 1;
+
+select * from FREEBOARD1 where up >=1;
+select * from (select * from )
+
+
+select * from freeboard1 free, bitcoinboard1 coin where free.up >=1 or coin.up >=1;
+
+select * from freeboard1;
+select * from PETBOARD1;
+select * from bitcoinboard1;
+select * from bitcoinboard1 where up >= 1;
+select * from FREEBOARD1 union all select * from BITCOINBOARD1;
+
+select * from freeboard1 union all select * from bitcoinboard1 union all select * from PETBOARD1;
+
+select * from freeboard1 union all select * from bitcoinboard1 where up >=1;
+
+select * from (select * from freeboard1 union all select * from bitcoinboard1 union all select * from PETBOARD1 union all select * from GAMEBOARD1) where title LIKE '%펫%' or content  LIKE '%펫%' order by writedate desc; 
+
+select * from (select * from freeboard1 union all select * from bitcoinboard1 union all select * from PETBOARD1 union all select * from GAMEBOARD1) where up >=1;
+
+
+
+select * from (select * from FREEBOARD1 union all select * from BITCOINBOARD1) union all select * from PETBOARD1 where up >= 1;
+
+select * from freeboard1 union select * from bitcoinboard1 where up >=1;
+
+select * from (select * from freeboard1 union all select * from bitcoinboard1 union all select * from PETBOARD1 union all select * from GAMEBOARD1);
+select * from (select * from freeboard_comment1 union all select * from bitcoinboard_comment1 union all select * from PETBOARD_comment1 union all select * from GAMEBOARD_comment1) where board_num = 176 order by writedate asc;
+drop table bitcoinboard_comment1;
+
+select * from freeboard1 union all select * from bitcoinboard1 union all select * from PETBOARD1 union all select * from GAMEBOARD1;
+update (select * from freeboard1 union all select * from bitcoinboard1 union all select * from PETBOARD1 union all select * from GAMEBOARD1) set readcount=readcount+1 where num=176;
+update freeboard1 set readcount=readcount+1 where num=?
+create table bitcoinboard_comment1(
+	num number(5) primary key,
+	board_num number(5) not null,
+	board_title varchar2(30) not null,
+	writer_id varchar2(30),
+	writer_name varchar2(30) not null,
+	content varchar2(1000),
+	writedate date default sysdate
+	);

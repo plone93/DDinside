@@ -1,0 +1,22 @@
+insert into adminlist1 (num, id, pass, name, email) 
+values (adminlist1_seq.nextval, 'admin','1234','Admin','admin@dd.com');
+
+create sequence adminlist1_seq;
+
+select * from noticeboard1 order by ROWNUM desc;
+select * from noticeboard1;
+
+
+select * from MVC_BOARD;
+
+select * from mvc_board order by bgroup desc, bstep asc;
+select COUNT(*) from noticeboard1;
+
+
+
+SELECT * FROM (SELECT T.*, ROW_NUMBER() OVER(ORDER BY writedate DESC) AS RNUM FROM noticeboard1 T) WHERE RNUM BETWEEN 11 AND 20;
+
+
+select * from (select * from(select noticeboard1.* from noticeboard1 order by ROWNUM desc)where ROWNUM >=?) where ROWNUM <= ?
+select * from(select noticeboard1.* from noticeboard1 order by ROWNUM desc)where ROWNUM >11;
+select noticeboard1.* from noticeboard1 order by ROWNUM desc;
